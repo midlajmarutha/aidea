@@ -1,7 +1,7 @@
 (function() {
     const chatbotContainerId = 'chatbot-container';
     const socket = new WebSocket("http://localhost:3000")
-    socket.
+    
     // Fetch the client-specific configuration from your API
     function fetchChatbotConfig(clientId) {
         return fetch(`http://localhost:3000/api/chatbot/config/myID`)
