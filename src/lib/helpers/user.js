@@ -1,7 +1,7 @@
 const { default: User } = require("@/models/User");
-import mongoConnect from "../mogoose"
 import bcrypt from "bcrypt"
 import { randomBytes } from "crypto";
+import { mongoConnect } from "../mongoose";
 
 
 const validatePassword = (password) => {

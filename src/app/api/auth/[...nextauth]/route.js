@@ -1,11 +1,13 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google"
-import { mongoConnect } from "@/lib/mogoose";
+import { mongoConnect } from "@/lib/mongoose";
 import User from "@/models/User";
 import { userHelper } from "@/lib/helpers/user";
 
+export const BASE_PATH = "/api/auth"
 const handler =  NextAuth({
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         Credentials({
             async authorize(credentials) {
@@ -21,12 +23,11 @@ const handler =  NextAuth({
         })
     ],
     session: {
-        jwt: true
+        strategy:"jwt"
     },
     pages: {
         signIn: "/auth/signin", // Custom sign-in page
     },
-    secret: process.env.NEXTAUTH_SECRET
 });
 
 export {handler as GET, handler as POST}
