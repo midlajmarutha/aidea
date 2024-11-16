@@ -81,7 +81,7 @@ export const userHelper = {
                 let verificationId = randomBytes(16).toString("base64")
                 console.log("vid",verificationId)
                 let data = await User.create({username: user.username, email: user.email, password: hashedPassword, verificationId});
-                resolve({ username:data.username, email: data.email, _id:data._id})
+                resolve({ name:data.username, email: data.email, _id:data._id})
             }
 
             // login to existing account

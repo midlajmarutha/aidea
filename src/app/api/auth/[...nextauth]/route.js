@@ -8,6 +8,25 @@ import { userHelper } from "@/lib/helpers/user";
 export const BASE_PATH = "/api/auth"
 const handler =  NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
+    callbacks:{
+        jwt:({token, user})=>{
+            token.role = "admin",
+            token.prefereces = {
+                pricing:99
+            }
+            return token;
+        },
+        session:({session, token})=>{
+            session.user = {
+                ...session.user,
+                role : "admin",
+                prefereces : {
+                    pricing:99
+                }
+            }
+            return session;
+        }
+    },
     providers: [
         Credentials({
             async authorize(credentials) {

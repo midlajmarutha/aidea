@@ -13,14 +13,13 @@ const font = Poppins({ weight: ["600", "700"], subsets: ["latin"] });
 export default async function Home() {
     const session = await getServerSession();
     if (session) {
-        return redirect("/dashboard");
+        return redirect("/projects");
     }
 
     return (
         <>
             {/* Hero Section */}
-            <main className="bg-gradient-to-b from-white to-gray-50">
-                {"nextauth:"+process.env.NEXTAUTH_SECRET}
+            <main className="bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-purple-500">
                 <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-12">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <h1 className={`text-4xl md:text-6xl font-bold ${font.className}`}>

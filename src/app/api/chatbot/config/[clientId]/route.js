@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 export async function GET(req,{params}){
-    const clientID = await (params).clientId
+    const clientID = (await params).clientId
     // TODO: Check user role, retrive config
     const res = NextResponse.next()
 
